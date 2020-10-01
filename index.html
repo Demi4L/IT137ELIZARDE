@@ -5,23 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0>  
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/mystyle.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
     <title>Dems Brial G. Elizarde</title>
     
    
 </head>
+
 <body>
 
             <section class="container-fluid">
                 <section class="row justify-content-center">
                     <section class="col-12 col-sm-6 col-md-4">
 
-                            <form class="form-container">
+                        
+
+                        </div>
+                            <form class="login-form">
 
                                 <h2 class="font-weight-bold text-center">
                                     LOGIN FORM
@@ -49,11 +54,113 @@
                                 <p class="float-right text-black font-weight-bold"><input type="checkbox">
                                     Remember Me
                                 </p>
+                                <br>
+                                <br>
+                                <div class="opt1 text-center">
+                                <p>Not yet registered? <a href="#">Create an Acount</a></p>
+                                </div>
+        
 
                             </form>
+
+                            <form class="signup-form" action="" method="post">
+
+                                <h2 class="font-weight-bold text-center">
+                                    SIGNUP FORM
+                                </h2>
+                                                 
+                                <div class="form-group font-weight-bold">
+                                  Username
+                                  <input type="text" class="form-control" placeholder="Username" value="" />
+                                </div>
+
+                                <div class="form-group font-weight-bold">
+                                  Email Address
+                                  <input type="email" id="email" class="form-control" required placeholder="Email Address" aria-label="Email" aria-describedby="basic-addon1">
+                                </div>
+
+                                <div class="text-center">
+                                  <span class="term emsg"></span>
+                                </div>
+
+                                <div class="form-group font-weight-bold">
+                                  Password
+                                  <input type="password" id="pass" class="form-control" required placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                                </div>
+
+                                <div class="form-group font-weight-bold">
+                                  Confirm
+                                  <input type="password" id="repass" class="form-control" required placeholder="Confirm Password" aria-label="Confirm Password" aria-describedby="basic-addon1">
+                                </div>
+
+                                <div class="text-center">
+                                  <span class="term rmsg"></span>
+                                </div>
+                               
+                                  <label class="">
+                                    <input type="checkbox" required> I agree with the 
+                                  </label>
+                                  <a href="#"> Terms & Conditions </a>
+                                </div>
+                                
+                                <input type="submit" id="submitSignup" class="btn btn-primary btn-block" value="Sign Up">
+                                <br>
+                                <div class="opt1 text-center">
+                                  <p>Already registered? <a href="#">Sign in</a></p>
+                                </div>
+
+                              </form>
+                              
+                            </div>
                     </section>
                 </section>
             </section>
-      
 </body>
+
+<script type="text/javascript">
+    $('.opt1 a').click(function(){
+      $('form').animate({
+        height: "toggle", opacity: "toggle"
+      }, "slow");
+    });
+
+    $(function() {
+      $('#email').keyup(function(){
+        if(validateEmail()){
+         $('#email').css("border","2px solid blue");
+         $('.emsg').html("<p class='text-primary'>You entered a valid email</p>");
+        }else {
+          $('#email').css("border","2px solid red");
+          $('.emsg').html("<p class='text-warning'>You entered an invalid email!</p>");
+          return false;
+        }
+      });
+    });
+    
+    function validateEmail(){
+      var email=$("#email").val();
+      var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+      if (reg.test(email)){
+        return true;
+      }else{
+        return false;
+      }
+    }
+    $(function() {
+      $('#repass').keyup(function(){
+        var password = $("#pass").val();
+        var repassword = $("#repass").val();
+
+        if(password != repassword){
+          $('#repass').css("border","2px solid red");
+          $('.rmsg').html("<p class='text-warning'>Those password does not match\!</p>");
+          return false;
+        }else 
+        $('#repass').css("border","2px solid blue");
+          $('.rmsg').html("<p class='text-primary'>Those password matched\!</p>");
+         return true;
+      });
+    });
+  </script> 
+
 </html>
